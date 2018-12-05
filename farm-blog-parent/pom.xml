@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.farm</groupId>
+		<artifactId>farm-parent</artifactId>
+		<version>3.0.0-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>farm-blog-parent</artifactId>
+	<name>farm-blog-parent</name>
+	<url>http://maven.apache.org</url>
+	<packaging>pom</packaging>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	<modules>
+		<module>farm-blog-admin</module>
+		<module>farm-blog-ui</module>
+	</modules>
+</project>

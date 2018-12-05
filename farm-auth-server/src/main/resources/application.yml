@@ -1,0 +1,25 @@
+server:
+    port: 9777 #启动端口
+    
+spring:
+  profiles:
+    active: dev
+  application:
+    name: farm-auth-server
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+    
+logging:
+    level:
+#        tk.mybatis: DEBUG
+        com.farm.auth.server: DEBUG
+        
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  security:
+    enabled: false

@@ -1,0 +1,13 @@
+server:
+  port: 8764     #启动端口
+  
+spring:  
+  application:
+    name: kexin-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://git.ke-xin.com.cn/kexin/03-code.git
+          username: yunnet@gmail.com
+          password: 5201314

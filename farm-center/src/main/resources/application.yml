@@ -1,0 +1,8 @@
+server:
+  port: 8761     #启动端口
+  
+spring:
+  profiles:
+    active: dev
+  application:
+    name: kexin-center

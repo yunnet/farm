@@ -1,0 +1,8 @@
+eureka:
+  server:
+    peer-node-read-timeout-ms: 200000
+#  instance:
+#     hostname: localhost
+  client:
+    registerWithEureka: false  #false:#不要向注册中心注册自己
+    fetchRegistry: false      #禁止检索服务  为true时，可以启动，但报异常：Cannot execute request on any known server

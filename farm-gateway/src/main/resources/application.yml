@@ -1,0 +1,96 @@
+server:
+  port: 8765
+  
+spring:
+  application:
+    name: farm-gateway
+  redis:
+    database: 2
+    host: 127.0.0.1
+    jedis:
+      pool:
+        max-active: 20
+  rabbitmq:
+    host: ${RABBIT_MQ_HOST:localhost}
+    port: ${RABBIT_MQ_PORT:5672}
+    username: guest
+    password: guest
+  sleuth:
+    enabled: true
+    http:
+      legacy:
+        enabled: true
+  cloud:
+    gateway:
+      locator:
+        enabled: true
+      routes:
+      # =====================================
+      - id: farm-auth-server
+        uri: lb://farm-auth-server
+        order: 8000
+        predicates:
+        - Path=/api/auth/**
+        filters:
+        - StripPrefix=2
+        
+      - id: farm-admin
+        uri: lb://farm-admin
+        order: 8001
+        predicates:
+        - Path=/api/admin/**
+        filters:
+        - StripPrefix=2  
+        
+logging:
+  level:
+    com.kexin.gateway: info        
+
+eureka:
+  instance:
+    statusPageUrlPath: /actuator/info
+    healthCheckUrlPath: /actuator/health
+    home-page-url-path: /
+# docker 部署开启
+#        prefer-ip-address: true
+#        ip-address: 127.0.0.1
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+# docker 部署开启
+ #           defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka/
+
+#请求和响应GZIP压缩支持
+feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  security:
+    enabled: false
+
+gate:
+  ignore:
+    startWith: /auth/jwt
+
+auth:
+  serviceId: farm-auth-server
+  user:
+    token-header: Authorization
+  client:
+    token-header: x-client-token
+    id: farm-gateway  #不填则默认读取spring.application.name
+    secret: 123456
