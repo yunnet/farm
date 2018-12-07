@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: farm-monitor
+  security:
+    user:
+      name: "admin"
+      password: "admin"
   boot:
     admin:
       routes:
@@ -14,19 +18,25 @@ spring:
       client:
         url: http://localhost:8764
         instance:
-          service-base-url: http://localhost:8764
-  
+          service-base-url: http://localhost:8764  
 eureka:
   instance:
     preferIpAddress: true
-    statusPageUrlPath: /actuator/info
-    healthCheckUrlPath: /actuator/health
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+    metadata-map:
+      user.name: "admin"
+      user.password: "admin"
+    
+#    statusPageUrlPath: /actuator/info
+#    healthCheckUrlPath: /actuator/health
   client:
-    healthcheck: true
-    registerWithEureka: true
-    fetchRegistry: true
+    registryFetchIntervalSeconds: 5
+#    healthcheck: true
+#    registerWithEureka: true
+#    fetchRegistry: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/ 
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/ 
       
 management:
   endpoints:
@@ -35,4 +45,4 @@ management:
         include: "*"
   endpoint:
     health:
-      show-details: ALWAYS           
+      show-details: ALWAYS
