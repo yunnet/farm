@@ -1,6 +1,7 @@
 package com.farm.monitor.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -16,7 +17,10 @@ import de.codecentric.boot.admin.server.config.AdminServerProperties;
  * 创建时间: 2018-12-07 14:37:26 <br />
  * 最后修改: 2018-12-07 14:37:26 <br />
  * 修改历史: <br />
+ * https://www.jianshu.com/p/c54e2c24c6aa
+ * 
  */
+@Profile("secure")
 @Configuration
 @EnableWebSecurity
 public class SecuritySecureConfig extends WebSecurityConfigurerAdapter{

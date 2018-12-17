@@ -4,10 +4,9 @@ server:
 spring:
   application:
     name: farm-monitor
-  security:
-    user:
-      name: "admin"
-      password: "admin"
+  profiles:
+    active:
+      - insecure
   boot:
     admin:
       routes:
@@ -19,17 +18,13 @@ spring:
         url: http://localhost:8764
         instance:
           service-base-url: http://localhost:8764  
+          
 eureka:
   instance:
     preferIpAddress: true
     leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: /actuator/info
     health-check-url-path: /actuator/health
-    metadata-map:
-      user.name: "admin"
-      user.password: "admin"
-    
-#    statusPageUrlPath: /actuator/info
-#    healthCheckUrlPath: /actuator/health
   client:
     registryFetchIntervalSeconds: 5
 #    healthcheck: true
@@ -46,3 +41,20 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+      
+---
+spring:
+  profiles: insecure
+        
+---
+spring:
+  profiles: secure
+  security:
+    user:
+      name: "admin"
+      password: "admin"
+eureka:  
+  instance:   
+    metadata-map:
+      user.name: "admin"
+      user.password: "admin"   
