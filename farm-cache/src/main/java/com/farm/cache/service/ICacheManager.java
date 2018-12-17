@@ -15,6 +15,7 @@ import com.farm.cache.vo.CacheTree;
  * 修改历史: <br />
  */
 public interface ICacheManager {
+	
 	public void removeAll();
 
     public void remove(String key);

@@ -9,6 +9,7 @@ import java.util.Set;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.farm.cache.service.IRedisService;
@@ -30,6 +31,7 @@ import redis.clients.jedis.JedisPool;
 public class RedisServiceImpl implements IRedisService{
 	private static final Logger logger = LoggerFactory.getLogger(RedisServiceImpl.class);
 
+	@Autowired
 	private JedisPool pool;
 	
 	@Override
@@ -40,7 +42,7 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             value = jedis.get(key);
         } catch (Exception e) {
-            logger.error(e.getMessage());
+            logger.error("[get key=" + key + "] "+ e.getMessage());
         } finally {
             returnResource(pool, jedis);
         }
@@ -67,6 +69,7 @@ public class RedisServiceImpl implements IRedisService{
         Jedis jedis = null;
         try {
             jedis = pool.getResource();
+            logger.debug("set key=" + key + " value=" + value);
             return jedis.set(key, value);
         } catch (Exception e) {
             logger.error(e.getMessage());
@@ -136,7 +139,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.append(key, str);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
             return 0L;
         } finally {
@@ -152,7 +154,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             return jedis.exists(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
             return false;
         } finally {
@@ -167,7 +168,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             return jedis.setnx(key, value);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
             return 0L;
         } finally {
@@ -183,7 +183,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.setex(key, seconds, value);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -198,7 +197,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             return jedis.setrange(key, offset, str);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
             return 0L;
         } finally {
@@ -214,7 +212,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             values = jedis.mget(keys);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -230,7 +227,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.mset(keysvalues);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -246,7 +242,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.msetnx(keysvalues);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -262,7 +257,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.getSet(key, value);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -278,7 +272,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.getrange(key, startOffset, endOffset);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -294,7 +287,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.incr(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -310,7 +302,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.incrBy(key, integer);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -327,7 +318,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.decr(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -344,7 +334,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.decrBy(key, integer);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -361,7 +350,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.strlen(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -378,7 +366,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.hset(key, field, value);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -395,7 +382,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.hsetnx(key, field, value);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -412,7 +398,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.hmset(key, hash);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -429,7 +414,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.hget(key, field);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -446,7 +430,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.hmget(key, fields);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -463,7 +446,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.hincrBy(key, field, value);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -480,7 +462,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.hexists(key, field);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -497,7 +478,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.hlen(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -515,7 +495,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.hdel(key, fields);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -532,7 +511,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.hkeys(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -549,7 +527,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.hvals(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -582,7 +559,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.lpush(key, strs);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -599,7 +575,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.rpush(key, strs);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -616,7 +591,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.linsert(key, where, pivot, value);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -633,7 +607,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.lset(key, index, value);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -650,7 +623,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.lrem(key, count, value);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -667,7 +639,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.ltrim(key, start, end);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -684,7 +655,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.lpop(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -701,7 +671,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.rpop(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -718,7 +687,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.rpoplpush(srckey, dstkey);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -735,7 +703,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.lindex(key, index);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -752,7 +719,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.llen(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -769,7 +735,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.lrange(key, start, end);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -786,7 +751,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.sadd(key, members);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -803,7 +767,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.srem(key, members);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -820,7 +783,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.spop(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -837,7 +799,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.sdiff(keys);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -854,7 +815,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.sdiffstore(dstkey, keys);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -871,7 +831,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.sinter(keys);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -888,7 +847,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.sinterstore(dstkey, keys);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -905,7 +863,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.sunion(keys);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -922,7 +879,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.sunionstore(dstkey, keys);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -939,7 +895,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.smove(srckey, dstkey, member);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -956,7 +911,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.scard(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -973,7 +927,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.sismember(key, member);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -990,7 +943,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.srandmember(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1007,7 +959,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.smembers(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1023,7 +974,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.zadd(key, score, member);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1039,7 +989,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.zrem(key, members);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1056,7 +1005,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.zincrby(key, score, member);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1073,7 +1021,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.zrank(key, member);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1090,7 +1037,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.zrevrank(key, member);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1107,7 +1053,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.zrevrange(key, start, end);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1124,7 +1069,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.zrevrangeByScore(key, max, min);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1141,7 +1085,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.zrevrangeByScore(key, max, min);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1158,7 +1101,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.zcount(key, min, max);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1175,7 +1117,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.zcard(key);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1192,7 +1133,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.zscore(key, member);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1225,7 +1165,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.zremrangeByScore(key, start, end);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1242,7 +1181,6 @@ public class RedisServiceImpl implements IRedisService{
             jedis = pool.getResource();
             res = jedis.keys(pattern);
         } catch (Exception e) {
-
             logger.error(e.getMessage());
         } finally {
             returnResource(pool, jedis);
@@ -1290,5 +1228,4 @@ public class RedisServiceImpl implements IRedisService{
         }
         return res;
     }
-
 }
