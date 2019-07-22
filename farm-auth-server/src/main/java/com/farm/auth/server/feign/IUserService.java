@@ -10,7 +10,7 @@ import com.farm.auth.server.util.user.JwtAuthenticationRequest;
 import com.farm.api.vo.user.UserInfo;
 
 /**
- * 版权所有: 2018 ® kexin Company <br />
+ * 版权所有: 2018 ® iot Company <br />
  * 单元名称: IUserService.java <br />
  * 说 明: <br />
  * 作 者: yunnet <br />

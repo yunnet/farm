@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
- * 版权所有: 2018 ® kexin Company  <br />
+ * 版权所有: 2018 ® iot Company  <br />
  * 单元名称: App.java  <br />
  * 说        明: 注册中心 <br />
  * 作        者: yunnet <br />

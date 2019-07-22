@@ -16,7 +16,7 @@ import com.farm.api.vo.user.UserInfo;
 import com.farm.cache.annotation.Cache;
 
 /**
- * 版权所有: 2018 ® kexin Company <br />
+ * 版权所有: 2018 ® iot Company <br />
  * 单元名称: UserRest.java <br />
  * 说 明: <br />
  * 作 者: yunnet <br />

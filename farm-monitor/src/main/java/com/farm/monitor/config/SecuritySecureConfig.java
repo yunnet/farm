@@ -10,7 +10,7 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 import de.codecentric.boot.admin.server.config.AdminServerProperties;
 
 /**
- * 版权所有: 2018 ® kexin Company  <br />
+ * 版权所有: 2018 ® iot Company  <br />
  * 单元名称: SecuritySecureConfig.java  <br />
  * 说        明:  <br />
  * 作        者: yunnet <br />

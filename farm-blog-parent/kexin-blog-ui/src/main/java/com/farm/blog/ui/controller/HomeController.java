@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * 版权所有: 2018 ® kexin Company <br />
+ * 版权所有: 2018 ® iot Company <br />
  * 单元名称: HomeController.java <br />
  * 说 明: <br />
  * 作 者: yunnet <br />

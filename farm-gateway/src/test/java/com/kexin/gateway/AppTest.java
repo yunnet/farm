@@ -1,4 +1,4 @@
-package com.kexin.gateway;
+package com.iot.gateway;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -13,7 +13,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.farm.common.context.BaseContextHandler;
 
 /**
- * 版权所有: 2018 ® kexin Company  <br />
+ * 版权所有: 2018 ® iot Company  <br />
  * 单元名称: EntityUtils.java  <br />
  * 说        明:  <br />
  * 作        者: yunnet <br />

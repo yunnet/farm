@@ -3,7 +3,7 @@ package com.farm.cache.parser;
 import com.farm.cache.constants.CacheScope;
 
 /**
- * 版权所有: 2018 ® kexin Company  <br />
+ * 版权所有: 2018 ® iot Company  <br />
  * 单元名称: IKeyGenerator.java  <br />
  * 说        明:   缓存键值表达式<br />
  * 作        者: yunnet <br />

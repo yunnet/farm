@@ -1,4 +1,4 @@
-package com.kexin.admin;
+package com.iot.admin;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

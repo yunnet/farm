@@ -18,7 +18,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
 /**
- * 版权所有: 2018 ® kexin Company  <br />
+ * 版权所有: 2018 ® iot Company  <br />
  * 单元名称: ArticleRest.java  <br />
  * 说        明:  <br />
  * 作        者: yunnet <br />

@@ -8,7 +8,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * 版权所有: 2018 ® kexin Company  <br />
+ * 版权所有: 2018 ® iot Company  <br />
  * 单元名称: IgnoreUserToken.java  <br />
  * 说        明: 忽略用户鉴权 <br />
  * 作        者: yunnet <br />

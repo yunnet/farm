@@ -8,7 +8,7 @@ import com.farm.admin.mapper.GroupTypeMapper;
 import com.farm.common.biz.BaseBiz;
 
 /**
- * 版权所有: 2018 ® kexin Company  <br />
+ * 版权所有: 2018 ® iot Company  <br />
  * 单元名称: GroupTypeBiz.java  <br />
  * 说        明:  <br />
  * 作        者: yunnet <br />

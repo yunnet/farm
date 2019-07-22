@@ -15,7 +15,7 @@ import com.farm.common.msg.ObjectRestResponse;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 版权所有: 2018 ® kexin Company  <br />
+ * 版权所有: 2018 ® iot Company  <br />
  * 单元名称: AuthClientRunner.java  <br />
  * 说        明:  <br />
  * 作        者: yunnet <br />

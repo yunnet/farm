@@ -1,4 +1,4 @@
-package com.kexin.blog.ui;
+package com.iot.blog.ui;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

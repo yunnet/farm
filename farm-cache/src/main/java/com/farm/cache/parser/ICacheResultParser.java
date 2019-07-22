@@ -3,7 +3,7 @@ package com.farm.cache.parser;
 import java.lang.reflect.Type;
 
 /**
- * 版权所有: 2018 ® kexin Company  <br />
+ * 版权所有: 2018 ® iot Company  <br />
  * 单元名称: ICacheResultParser.java  <br />
  * 说        明: cache结果解析 <br />
  * 作        者: yunnet <br />

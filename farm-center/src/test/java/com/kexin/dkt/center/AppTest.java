@@ -1,4 +1,4 @@
-package com.kexin.dkt.center;
+package com.iot.dkt.center;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

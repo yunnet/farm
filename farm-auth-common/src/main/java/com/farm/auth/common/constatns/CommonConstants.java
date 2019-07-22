@@ -1,7 +1,7 @@
 package com.farm.auth.common.constatns;
 
 /**
- * 版权所有: 2018 ® kexin Company  <br />
+ * 版权所有: 2018 ® iot Company  <br />
  * 单元名称: CommonConstants.java  <br />
  * 说        明:  <br />
  * 作        者: yunnet <br />

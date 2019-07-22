@@ -3,7 +3,7 @@ package com.farm.auth.server.bean;
 import com.farm.auth.common.jwt.IJWTInfo;
 
 /**
- * 版权所有: 2018 ® kexin Company  <br />
+ * 版权所有: 2018 ® iot Company  <br />
  * 单元名称: ClientInfo.java  <br />
  * 说        明:  <br />
  * 作        者: yunnet <br />

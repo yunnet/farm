@@ -1,4 +1,4 @@
-package com.kexin.auth.test;
+package com.iot.auth.test;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

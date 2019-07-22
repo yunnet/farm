@@ -20,7 +20,7 @@ import com.farm.common.exception.auth.ClientInvalidException;
 import com.farm.common.util.UUIDUtils;
 
 /**
- * 版权所有: 2018 ® kexin Company  <br />
+ * 版权所有: 2018 ® iot Company  <br />
  * 单元名称: DBAuthClientService.java  <br />
  * 说        明:  <br />
  * 作        者: yunnet <br />

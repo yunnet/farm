@@ -20,7 +20,7 @@ import com.farm.cache.parser.IKeyGenerator;
 import com.farm.cache.parser.impl.DefaultKeyGenerator;
 
 /**
- * 版权所有: 2018 ® kexin Company  <br />
+ * 版权所有: 2018 ® iot Company  <br />
  * 单元名称: CacheClearAspect.java  <br />
  * 说        明: 清除缓存注解拦截 <br />
  * 作        者: yunnet <br />
